@@ -1,4 +1,4 @@
-import {types, Instance, SnapshotIn} from 'mobx-state-tree';
+import {types, Instance, SnapshotIn, SnapshotOut} from 'mobx-state-tree';
 
 // Product model
 const Product = types.model('Product', {
@@ -16,6 +16,11 @@ export const ProductStore = types
     addProduct(product: SnapshotIn<typeof Product>) {
       self.products.push(product);
     },
+    addProduct2(product: Array<IProductSnapshotType>) {
+      const validProducts = product.map(usr => Product.create(usr));
+      self.products.replace(validProducts);
+    },
   }));
 
 export type IProduct = Instance<typeof Product>;
+export type IProductSnapshotType = SnapshotOut<typeof Product>;
