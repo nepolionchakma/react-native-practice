@@ -18,8 +18,7 @@ const Home = observer(() => {
       size: ['M', 'L'],
       colors: ['black', 'white'],
     };
-
-    productStore.addProduct(newProduct); // ✅ now works
+    productStore.addProduct(newProduct);
   };
   const handleAddStudent = () => {
     const newStudent = {
@@ -28,7 +27,6 @@ const Home = observer(() => {
       age: 20,
       subjects: ['Math', 'Science', 'English'],
     };
-
     studentStore.addStudent(newStudent);
   };
   return (

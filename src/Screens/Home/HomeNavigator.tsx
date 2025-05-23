@@ -3,6 +3,8 @@ import React from 'react';
 import Home from './Home';
 import Notifications from '../Notifications/Notifications';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Students from '../Students/Students';
+import Products from '../Products/Products';
 
 const HomeNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -41,7 +43,29 @@ const HomeNavigator = () => {
         />
         <Tab.Screen
           name="Notifications"
-          component={Notifications}
+          component={Students}
+          options={{
+            headerShown: false,
+            tabBarStyle: {
+              backgroundColor: 'white',
+            },
+            tabBarIcon: ({focused}: {focused: boolean}) => (
+              <Image
+                source={focused ? SettingsFilled : SettingsEmpty}
+                style={{
+                  width: 30,
+                  height: 30,
+                  marginTop: 10,
+                  // tintColor: focused ? 'blue' : 'black',
+                }}
+              />
+            ),
+            tabBarLabel: '',
+          }}
+        />
+        <Tab.Screen
+          name="Products"
+          component={Products}
           options={{
             headerShown: false,
             tabBarStyle: {
